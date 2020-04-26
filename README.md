@@ -4,3 +4,8 @@
  - React-Redux
  - Hook
  - API 
+ 
+ # Use git
+ - Clone this repo
+ - yarn 
+ - react-native run-android
