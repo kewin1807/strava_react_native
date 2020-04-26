@@ -79,6 +79,11 @@ export const startLoginScreen = code => {
     },
   });
 };
+Navigation.setDefaultOptions({
+  statusBar: {
+    style: 'light',
+  },
+});
 
 export const startTabScreen = () => {
   Promise.all([
@@ -116,6 +121,7 @@ export const startTabScreen = () => {
                 name: 'tabProfile',
                 options: {
                   bottomTab: {
+                    iconColor: 'orange',
                     text: 'profile',
                     icon: user,
                     testID: 'SECOND_TAB_BAR_BUTTON',

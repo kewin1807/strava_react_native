@@ -28,7 +28,7 @@ export const colors = {
   white: '#FFFFFF',
   opacityWhite: '#FFFFFF60',
   black: '#000000',
-  primary: 'rgb(4, 126, 242)',
+  primary: 'rgb(255, 68, 30)',
   homeHeader: 'rgb(0, 185, 255)',
   lightPrimary: 'rgb(244, 250, 255)',
   extremLightBlue: 'rgb(230, 243, 255)',

@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, ActivityIndicator} from 'react-native';
 import {wrap, options} from '../../../themes';
 import constants from '../../constants';
+import store from '../../../src/store';
 import axios from 'axios';
 @wrap
 export default class Loading extends React.Component {
@@ -67,24 +68,29 @@ export default class Loading extends React.Component {
       header: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        ...params.headers,
       },
     };
+    if (params && params.headers) {
+      mainRequest['header'] = {...mainRequest['header'], ...params.headers};
+    }
 
     // Use dynamic accessToken for refreshing token later
     // Because store dispatch save accessToken is async function
-    // const accessToken =
-    //   store &&
-    //   store.getState &&
-    //   typeof store.getState === 'function' &&
-    //   store.getState().auth.accessToken;
+    const accessToken =
+      store &&
+      store.getState &&
+      typeof store.getState === 'function' &&
+      store.getState().auth.access_token;
 
-    // if (!refresh) {
-    //   this.accessToken = accessToken;
-    // }
-    // if (accessToken && useAccessToken && !refresh) {
-    //   mainRequest.headers.Authorization = `Bearer ${this.accessToken}`;
-    // }
+    if (!refresh) {
+      this.accessToken = accessToken;
+    }
+    if (accessToken && useAccessToken && !refresh) {
+      mainRequest.headers = {
+        ...mainRequest['header'],
+        ...{Authorization: `Bearer ${this.accessToken}`},
+      };
+    }
     return mainRequest;
   };
   //fetch data
