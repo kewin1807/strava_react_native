@@ -16,7 +16,7 @@ import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.rnappauth.RNAppAuthPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
-
+import com.airbnb.android.react.maps.MapsPackage;
 import java.util.List;
 
 public class MainApplication extends NavigationApplication {
@@ -39,7 +39,7 @@ public class MainApplication extends NavigationApplication {
   protected List<ReactPackage> getPackages() {
     // Add additional packages you require here
     // No need to add RnnPackage and MainReactPackage
-    return Arrays.<ReactPackage>asList(new RNCWebViewPackage(), new AsyncStoragePackage(), new RNAppAuthPackage(), new VectorIconsPackage());
+    return Arrays.<ReactPackage>asList(new RNCWebViewPackage(), new AsyncStoragePackage(), new RNAppAuthPackage(), new VectorIconsPackage(), new MapsPackage());
   }
 
   @Override

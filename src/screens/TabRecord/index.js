@@ -1,17 +1,57 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {wrap} from '../../../themes';
-
+import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 @wrap
 export default class TabRecord extends React.Component {
   constructor() {
     super();
+    this.state = {
+      region: {
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      },
+    };
   }
+  onRegionChange = region => {
+    this.setState({region});
+  };
   render() {
     return (
-      <View cls="flx-i aic jcc">
-        <Text>Record</Text>
+      <View style={styles.container}>
+        <MapView
+          provider={PROVIDER_GOOGLE}
+          style={styles.map}
+          region={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.015,
+            longitudeDelta: 0.0121,
+          }}
+          onRegionChange={this.onRegionChange}
+        />
       </View>
     );
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    position: 'absolute',
+    flex: 1,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  map: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+});
